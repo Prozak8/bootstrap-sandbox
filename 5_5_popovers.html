@@ -147,19 +147,39 @@
       <!--##################START HERE####################-->
 
       <!-- POPOVER -->
-      <button class="btn btn-danger">
+      <button
+        class="btn btn-danger"
+        data-toggle="popover"
+        data-placement="top"
+        data-content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quaerat."
+      >
         Toggle popover
       </button>
 
-      <button class="btn btn-primary">
+      <button
+        class="btn btn-primary"
+        data-toggle="popover"
+        data-placement="right"
+        data-content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quaerat."
+      >
         Toggle popover
       </button>
 
-      <button class="btn btn-warning">
+      <button
+        class="btn btn-warning"
+        data-toggle="popover"
+        data-placement="bottom"
+        data-content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quaerat."
+      >
         Toggle popover
       </button>
 
-      <button class="btn btn-info">
+      <button
+        class="btn btn-info"
+        data-toggle="popover"
+        data-placement="left"
+        data-content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quaerat."
+      >
         Toggle popover
       </button>
 
@@ -167,16 +187,29 @@
       <br />
 
       <!-- DISMISSIBLE POPOVER -->
-      <button class="btn btn-primary">
+      <button
+        id="dismissable"
+        class="btn btn-primary"
+        data-toggle="popover"
+        data-placement="left"
+        data-content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quaerat."
+        data-trigger="focus"
+      >
         Toggle popover
       </button>
 
       <hr />
 
       <!-- CONTROL WITH JS -->
-      <button class="btn btn-secondary">Show Popover</button>
-      <button class="btn btn-secondary">Hide Popover</button>
-      <button class="btn btn-secondary">Toggle Popover</button>
+      <button class="btn btn-secondary" onclick="showPopover()">
+        Show Popover
+      </button>
+      <button class="btn btn-secondary" onclick="hidePopover()">
+        Hide Popover
+      </button>
+      <button class="btn btn-secondary" onclick="togglePopover()">
+        Toggle Popover
+      </button>
     </div>
 
     <div style="margin-top:500px;"></div>
@@ -196,6 +229,33 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script></script>
+    <script>
+      // Init Popover
+      $('[data-toggle="popover"]').popover();
+
+      function showPopover() {
+        $('#dismissable').popover('show');
+      }
+      function hidePopover() {
+        $('#dismissable').popover('hide');
+      }
+      function togglePopover() {
+        $('#dismissable').popover('toggle');
+      }
+
+      // Popover Events
+      $('#dismissable').on('show.bs.popover', function() {
+        console.log('Popover show');
+      });
+      $('#dismissable').on('shown.bs.popover', function() {
+        console.log('Popover shown');
+      });
+      $('#dismissable').on('hide.bs.popover', function() {
+        console.log('Popover hide');
+      });
+      $('#dismissable').on('hidden.bs.popover', function() {
+        console.log('Popover hidden');
+      });
+    </script>
   </body>
 </html>
